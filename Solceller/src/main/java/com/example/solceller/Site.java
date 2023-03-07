@@ -8,13 +8,15 @@ public class Site
     private int siteID;
     public ArrayList<ArrayList<ArrayList<Entry>>> siteEntry = new ArrayList<>();
     //public ArrayList<Entry> siteEntry;
+    public int getSiteID()
+        {return this.siteID;}
     public void createEntry(int entryID, long total, int online, int offline, String month, String day, String time)
     {
         Entry entry = new Entry(entryID,total,online,offline,month, day ,time);
         this.siteEntry.get(Integer.parseInt(month)-1).get(Integer.parseInt(day)-1).set(Integer.parseInt(time),entry);
     }
 
-    public Site(int siteID)
+    public Site(int siteID, boolean meme)
     {
         int monthAxis = 12;
         int dayAxis = 31;
@@ -34,5 +36,9 @@ public class Site
         }
         this.siteID = siteID;
 
+    }
+    public Site(int siteID)
+    {
+        this.siteID = siteID;
     }
 }

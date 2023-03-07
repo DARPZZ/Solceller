@@ -5,12 +5,15 @@ import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.jar.JarEntry;
 
 public class HelloController
 {
+    private static ArrayList<Site> sitesv2 = new ArrayList<>();
     private static ArrayList<Site> sites = new ArrayList<>();
     @FXML
     private Label welcomeText;
@@ -21,43 +24,110 @@ public class HelloController
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
-    public static void initializeFromFile()
-    {
+    public static void initializeFromFile() {
         String filePath = new File("SolcelleData.tsv").getAbsolutePath();
         File file = new File(filePath);
         Scanner fileIn;
-        try
-        {
+        try {
             fileIn = new Scanner(file);
         } catch (FileNotFoundException e) {
             System.out.println(e);
             throw new RuntimeException(e);
         }
-        for (int i = 0; i < 100; i++)
-        {
-            fileIn.useDelimiter("\n");
-            fileIn.next();
+        Site site = new Site(16019,true);
+        sites.add(site);
+        boolean sitesChecker;
+        fileIn.useDelimiter("\n");
+        fileIn.next();
+        for (int i = 0; i < 100; i++) {
+            sitesChecker = false;
             String entry = fileIn.next();
             String[] fullEntry = entry.split("\t");
 
             String[] date = fullEntry[stringIndex.DATE.getColumnType()].split("-");
 
-            int id = Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]);
+            int id = Integer.parseInt(fullEntry[stringIndex.ENTRYID.getColumnType()]);
             long total = Long.parseLong(fullEntry[stringIndex.TOTAL.getColumnType()]);
             int online = Integer.parseInt(fullEntry[stringIndex.ONLINE.getColumnType()]);
             int offline = Integer.parseInt((fullEntry[stringIndex.OFFLINE.getColumnType()]));
-            String month =date[dateIndex.MONTH.getdateIndex()];
-            String day =date[dateIndex.DAY.getdateIndex()].substring(0,2); // needs fix
-
+            String month = date[dateIndex.MONTH.getdateIndex()];
+            String day = date[dateIndex.DAY.getdateIndex()].substring(0, 2);
             int meme = entry.lastIndexOf("T");
-            String time = entry.substring(meme+1,meme+3); // hard coded index of the hour entry
+            String time = entry.substring(meme + 1, meme + 3); // hard coded index of the hour entry
 
-            Site site = new Site(Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]));
-            sites.add(site);
-            site.createEntry(id,total,online,offline,month,day,time);
+            for (int j = 0; j <= sites.size(); j++)
+            {
+                if (sites.size() == j)
+                {
+                    sitesChecker = true;
+                    break;
+                }
+                if (Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]) == sites.get(j).getSiteID()) {
+                    sites.get(j).createEntry(id, total, online, offline, month, day, time);
+                    break;
+                }
+
+            }
+            if (sitesChecker ==true)
+            {
+                site = new Site(Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]),true);
+                sites.add(site);
+                site.createEntry(id, total, online, offline, month, day, time);
+            }
         }
-        System.out.println("meem");
+
+
+
+        System.out.println("end");
     }
+
+
+    /*
+    public static void initializeFromFile()
+    {
+        String filePath = new File("SolcelleData.tsv").getAbsolutePath();
+        File file = new File(filePath);
+        Scanner fileIn;
+        try {
+            fileIn = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+        fileIn.useDelimiter("\n");
+        fileIn.next();
+        String entry;
+        int index;
+        sitesv2.add(new Site(16019));
+        for (int i = 0; i <100000; i++)
+        {
+            index=0;
+           entry = fileIn.next();
+           String[] fullEntry = entry.split("\t");
+            for (int j = 0; j < sitesv2.size(); j++)
+            {
+                int SID = Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]);
+                int tempSID = sitesv2.get(j).getSiteID();
+                if (SID ==  tempSID)
+                {
+                    index=j+1;
+                }
+
+            }
+            if (index < 1)
+            {
+                sitesv2.add(new Site(Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()])));
+            }
+
+        }
+        System.out.println("end");
+
+    }
+
+
+     */
+
+
     public enum stringIndex{
         ENTRYID (0),
         DATE (1),
