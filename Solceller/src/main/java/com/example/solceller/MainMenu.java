@@ -18,9 +18,12 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class MainMenu
+public class MainMenu implements iChangeScene
 {
 HourByHour hourByHour = new HourByHour();
+Månede månede = new Månede();
+BestWorst bestWorst = new BestWorst();
+
 
     //region getter
     public Button getButton()
@@ -72,11 +75,39 @@ HourByHour hourByHour = new HourByHour();
 
 public void changescene(Stage stage, Scene scene)
 {
-    buttonHByH.setOnAction(event -> {
-        // create a new scene for the hour by hour view
-        Scene sceneHourByHour = hourByHour.createHourByHourScene();
-        // set the new scene on the primary stage
-        stage.setScene(sceneHourByHour);
+
+    buttonHByH.setOnAction(new EventHandler<ActionEvent>()
+    {
+        @Override
+        public void handle(ActionEvent event)
+        {
+            {
+                // create a new scene for the hour by hour view
+                Scene sceneHourByHour = hourByHour.createHourByHourScene();
+                // set the new scene on the primary stage
+                stage.setScene(sceneHourByHour);
+        }
+    }
+    });
+    buttonMonth.setOnAction(new EventHandler<ActionEvent>()
+    {
+        @Override
+        public void handle(ActionEvent event)
+        {
+            Scene createmånedScene = månede.createmånedScene();
+            // set the new scene on the primary stage
+            stage.setScene(createmånedScene);
+        }
+    });
+    bestWorstButton.setOnAction(new EventHandler<ActionEvent>()
+    {
+        @Override
+        public void handle(ActionEvent event)
+        {
+            Scene createBestWorstScene = bestWorst.createBestWorstScene();
+            // set the new scene on the primary stage
+            stage.setScene(createBestWorstScene);
+        }
     });
 }
 }
