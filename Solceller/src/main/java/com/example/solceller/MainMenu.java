@@ -4,19 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 public class MainMenu implements iChangeScene
 {
@@ -32,6 +26,7 @@ BestWorst bestWorst = new BestWorst();
         buttonHByH.setPrefHeight(30);
         buttonHByH.setLayoutX(100);
         buttonHByH.setText("Hour by Hour");
+
         return buttonHByH;
     }
     public Button getbuttonMonth()
@@ -56,6 +51,7 @@ BestWorst bestWorst = new BestWorst();
 
     public ImageView getImageView() throws  FileNotFoundException
     {
+
         Image img = new Image(new FileInputStream("Solceller/src/main/java/Billeder/solar-cells-491701.jpg"));
         ImageView imageView = new ImageView();
         imageView.setImage(img);
@@ -75,6 +71,10 @@ BestWorst bestWorst = new BestWorst();
 
 public void changescene(Stage stage, Scene scene)
 {
+
+    hourByHour.changescene(stage,scene);
+    månede.changescene(stage,scene);
+    bestWorst.changescene(stage,scene);
 
     buttonHByH.setOnAction(new EventHandler<ActionEvent>()
     {
@@ -108,6 +108,7 @@ public void changescene(Stage stage, Scene scene)
             // set the new scene on the primary stage
             stage.setScene(createBestWorstScene);
         }
+
     });
 }
 }

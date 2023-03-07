@@ -6,4 +6,5 @@ import javafx.stage.Stage;
 public interface iChangeScene
 {
      void changescene(Stage stage, Scene scene);
+
 }
