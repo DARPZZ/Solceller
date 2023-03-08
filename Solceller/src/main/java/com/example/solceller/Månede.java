@@ -7,10 +7,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 public class Månede implements iChangeScene
 {
+    findDate date = new findDate();
     Button buttonBack = new Button("Back");
     public Scene createmånedScene() {
         buttonBack.setPrefWidth(50);
         AnchorPane anchorPane = new AnchorPane();
+        date.getDatePicker(anchorPane);
         Scene scene = new Scene(anchorPane, 950, 700);
         anchorPane.getChildren().addAll(buttonBack);
         return scene;

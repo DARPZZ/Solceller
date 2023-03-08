@@ -7,14 +7,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 public class HourByHour implements iChangeScene
 {
+    findDate date = new findDate();
     Button buttonBack = new Button("Back");
 
     public Scene createHourByHourScene()
     {
+
         buttonBack.setPrefWidth(50);
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
-
+        date.getDatePicker(anchorPane);
         buttonBack.setPrefWidth(50);
 
         anchorPane.getChildren().add(buttonBack);
