@@ -13,4 +13,9 @@
       <module name="Solceller" target="18" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Solceller" options="--add-exports javafx.graphics/com.sun.javafx.css=com.example.solceller" />
+    </option>
+  </component>
 </project>
