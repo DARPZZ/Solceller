@@ -4,19 +4,15 @@ import Model.Type;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.print.Collation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class HourByHour implements iChangeScene
 {
@@ -38,16 +34,16 @@ public class HourByHour implements iChangeScene
         ArrayList<String> choices = new ArrayList<>();
         for (int i = 0; i < HelloController.sites.size(); i++)
         {
-            choices.add(i + ". " + HelloController.sites.get(i).getSiteID());
+            choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
         }
         ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
 
-        choiceBox.setOnAction(new EventHandler<ActionEvent>()
+        choiceBox.setOnAction(new EventHandler<>()
         {
             @Override
             public void handle(ActionEvent actionEvent)
             {
-                choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")));
+                choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")))-1;
                 choiceID = choiceBox.getValue().substring(choiceBox.getValue().indexOf(" ")+1);
                 System.out.println("choiceIndex " + choiceIndex);
                 System.out.println("choiceID " + choiceID);
@@ -60,7 +56,7 @@ public class HourByHour implements iChangeScene
 
 
         DatePicker datePicker = new DatePicker();
-        datePicker.setOnAction(new EventHandler<ActionEvent>()
+        datePicker.setOnAction(new EventHandler<>()
         {
             @Override
             public void handle(ActionEvent actionEvent)
@@ -69,10 +65,6 @@ public class HourByHour implements iChangeScene
                 int day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
                 int month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
 
-                System.out.println(day);
-                System.out.println(month);
-
-                // Mangler null check
                 try
                 {
                     data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
@@ -86,9 +78,7 @@ public class HourByHour implements iChangeScene
             }
         });
 
-
-
-        btnAccept.setOnAction(new EventHandler<ActionEvent>()
+        btnAccept.setOnAction(new EventHandler<>()
         {
             @Override
             public void handle(ActionEvent actionEvent)
@@ -98,13 +88,11 @@ public class HourByHour implements iChangeScene
             }
         });
 
-
         buttonBack.setPrefWidth(50);
         btnAccept.setPrefWidth(50);
         btnAccept.setLayoutY(100);
         btnAccept.setLayoutX(20);
         MyGraph.getChart().setLayoutX(350);
-
 
         anchorPane.getChildren().addAll(buttonBack, btnAccept, datePicker, choiceBox, MyGraph.getChart());
 

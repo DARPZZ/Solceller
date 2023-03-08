@@ -20,8 +20,6 @@ public class Graph
             case AREA_CHART -> this.chart = new AreaChart<>(X_AXIS, Y_AXIS);
         }
         this.chart.setTitle(title);
-        X_AXIS.setLabel(titleX);
-        Y_AXIS.setLabel(titleY);
     }
 
     public void CreateSeries(String name, ArrayList<Entry> list)
@@ -31,7 +29,15 @@ public class Graph
 
         for ( Entry value : list )
         {
-            seriesName.getData().add(new XYChart.Data<>(value.getTime(), value.getOnline() + value.getOffline()));
+            try
+            {
+                seriesName.getData().add(new XYChart.Data<>(value.getTime(), value.getOnline() + value.getOffline()));
+            }
+            catch (Exception e)
+            {
+                System.out.println("Null reference");
+            }
+
         }
         this.chart.getData().add(seriesName);
     }
