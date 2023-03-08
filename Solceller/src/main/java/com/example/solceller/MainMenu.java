@@ -3,15 +3,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeFormatter;
 
 public class MainMenu implements iChangeScene
 {
+    DatePicker datePicker = new DatePicker();
 HourByHour hourByHour = new HourByHour();
 Månede månede = new Månede();
 BestWorst bestWorst = new BestWorst();
@@ -101,5 +106,23 @@ public void changescene(Stage stage, Scene scene)
         }
 
     });
+}
+public DatePicker findDate()
+{
+    datePicker.setOnKeyPressed(new EventHandler<KeyEvent>()
+    {
+        @Override
+        public void handle(KeyEvent keyEvent)
+        {
+            if (keyEvent.getCode().equals(KeyCode.ENTER)){
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM");
+                String formattedValue = datePicker.getValue().format(formatter);
+                System.out.println(formattedValue);
+
+            }
+        }
+    });
+ return datePicker;
 }
 }
