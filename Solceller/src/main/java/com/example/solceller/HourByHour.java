@@ -1,20 +1,17 @@
 package com.example.solceller;
-
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 public class HourByHour implements iChangeScene
 {
     Button buttonBack = new Button("Back");
 
     public Scene createHourByHourScene()
     {
+        buttonBack.setPrefWidth(50);
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
 

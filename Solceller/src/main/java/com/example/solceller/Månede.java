@@ -3,16 +3,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 public class Månede implements iChangeScene
 {
     Button buttonBack = new Button("Back");
     public Scene createmånedScene() {
+        buttonBack.setPrefWidth(50);
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 950, 700);
-            anchorPane.getChildren().addAll(buttonBack);
+        anchorPane.getChildren().addAll(buttonBack);
         return scene;
     }
     /**

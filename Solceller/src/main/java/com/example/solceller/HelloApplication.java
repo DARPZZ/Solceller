@@ -10,9 +10,6 @@ import java.net.URISyntaxException;
 
 public class HelloApplication extends Application
 {
-
-
-
     @Override
     public void start(Stage stage) throws IOException
     {
@@ -22,7 +19,7 @@ public class HelloApplication extends Application
         MainMenu mainMenu = new MainMenu();
          mainMenu.changescene(stage, anchorPane.getScene());
         anchorPane.getChildren().addAll(mainMenu.getButton(),mainMenu.getbuttonMonth(),mainMenu.getBestWorstButton(), mainMenu.getImageView());
-        stage.setTitle("Hello!");
+        stage.setTitle("Solar cell");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,5 +1,4 @@
 package com.example.solceller;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,15 +10,11 @@ import javafx.stage.Stage;
 public class BestWorst implements iChangeScene
 {
     Button buttonBack = new Button("Back");
-
     public Scene createBestWorstScene()
     {
-
-        Label label = new Label("ko");
-        label.setLayoutX(50);
-        label.setLayoutY(50);
+        buttonBack.setPrefWidth(50);
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.getChildren().addAll(buttonBack,label);
+        anchorPane.getChildren().addAll(buttonBack);
         Scene scene = new Scene(anchorPane, 950, 700);
         return scene;
     }
