@@ -13,7 +13,7 @@ import java.util.jar.JarEntry;
 
 public class HelloController
 {
-    private static ArrayList<Site> sites = new ArrayList<>();
+    public static ArrayList<Site> sites = new ArrayList<>();
     @FXML
     private Label welcomeText;
 
