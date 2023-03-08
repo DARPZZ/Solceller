@@ -20,8 +20,11 @@ public class HourByHour implements iChangeScene
     Button btnAccept = new Button("Enter");
     Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
     int choiceIndex;
+    int day;
+    int month;
     String choiceID;
     ArrayList<Entry> data;
+
 
 
     public Scene createHourByHourScene()
@@ -62,19 +65,9 @@ public class HourByHour implements iChangeScene
             public void handle(ActionEvent actionEvent)
             {
                 String formattedDate = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                int day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
-                int month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
+                day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
+                month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
 
-                try
-                {
-                    data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
-
-                }
-                catch (Exception e)
-                {
-                    System.out.println("Ingen data for den valgte dato/SID");
-                }
-                     // Virker. Testet med den 15. december 2022
             }
         });
 
@@ -83,8 +76,9 @@ public class HourByHour implements iChangeScene
             @Override
             public void handle(ActionEvent actionEvent)
             {
+                data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
                 MyGraph.getChart().getData().clear();
-                MyGraph.CreateSeries(choiceID, data);
+                MyGraph.CreateSeries("SID: " + choiceID, data);
             }
         });
 
