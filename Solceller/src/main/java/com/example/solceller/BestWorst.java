@@ -14,12 +14,21 @@ public class BestWorst implements iChangeScene
 
     public Scene createBestWorstScene()
     {
+
+        Label label = new Label("ko");
+        label.setLayoutX(50);
+        label.setLayoutY(50);
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.getChildren().addAll(buttonBack);
-        Scene scene = new Scene(anchorPane, 800, 600);
+        anchorPane.getChildren().addAll(buttonBack,label);
+        Scene scene = new Scene(anchorPane, 950, 700);
         return scene;
     }
 
+    /**
+     * This section cchanges back to the main scene
+     * @param stage
+     * @param scene
+     */
     @Override
     public void changescene(Stage stage, Scene scene)
     {

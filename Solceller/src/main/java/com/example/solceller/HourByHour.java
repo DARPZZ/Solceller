@@ -1,6 +1,6 @@
 package com.example.solceller;
 
-import javafx.application.Preloader;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,7 +15,6 @@ public class HourByHour implements iChangeScene
 
     public Scene createHourByHourScene()
     {
-
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
 
@@ -23,12 +22,16 @@ public class HourByHour implements iChangeScene
 
         anchorPane.getChildren().add(buttonBack);
 
-        Scene scene = new Scene(anchorPane, 800, 600);
+        Scene scene = new Scene(anchorPane, 950, 700);
 
         return scene;
     }
 
-
+    /**
+     * This section cchanges back to the main scene
+     * @param stage
+     * @param scene
+     */
     @Override
     public void changescene(Stage stage, Scene scene)
     {

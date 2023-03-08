@@ -59,8 +59,6 @@ BestWorst bestWorst = new BestWorst();
         imageView.setFitWidth(1000);
         imageView.setY(35);
         imageView.setX(1);
-
-
         return imageView;
     }
         //endregion
