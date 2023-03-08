@@ -24,15 +24,14 @@ public class Graph
         Y_AXIS.setLabel(titleY);
     }
 
-    public void CreateSeries(String name, ArrayList<Entry> list)   // ArrayList<Entry> list
+    public void CreateSeries(String name, ArrayList<Entry> list)
     {
-        // Loop
         XYChart.Series<String, Number> seriesName = new XYChart.Series<>();
         seriesName.setName(name);
 
         for ( Entry value : list )
         {
-            seriesName.getData().add(new XYChart.Data<>(value.getTime(), value.getOnline() + value.getOffline()));      // seriesName.getData().add(new XYChart.Data<>(Entry.getTime(), Entry.getProduction()))
+            seriesName.getData().add(new XYChart.Data<>(value.getTime(), value.getOnline() + value.getOffline()));
         }
         this.chart.getData().add(seriesName);
     }

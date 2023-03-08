@@ -21,6 +21,12 @@ import java.util.Collections;
 public class HourByHour implements iChangeScene
 {
     Button buttonBack = new Button("Back");
+    Button btnAccept = new Button("Enter");
+    Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
+    int choiceIndex;
+    String choiceID;
+    ArrayList<Entry> data;
+
 
     public Scene createHourByHourScene()
     {
@@ -32,14 +38,25 @@ public class HourByHour implements iChangeScene
         ArrayList<String> choices = new ArrayList<>();
         for (int i = 0; i < HelloController.sites.size(); i++)
         {
-            choices.add("" + HelloController.sites.get(i).getSiteID());
+            choices.add(i + ". " + HelloController.sites.get(i).getSiteID());
         }
         ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
+
+        choiceBox.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")));
+                choiceID = choiceBox.getValue().substring(choiceBox.getValue().indexOf(" ")+1);
+                System.out.println("choiceIndex " + choiceIndex);
+                System.out.println("choiceID " + choiceID);
+            }
+        });
 
         choiceBox.setLayoutX(20);
         choiceBox.setLayoutY(70);
         choiceBox.setPrefWidth(100);
-        anchorPane.getChildren().add(choiceBox);
 
 
         DatePicker datePicker = new DatePicker();
@@ -49,33 +66,48 @@ public class HourByHour implements iChangeScene
             public void handle(ActionEvent actionEvent)
             {
                 String formattedDate = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
-                int day = Integer.parseInt(formattedDate.substring(0, formattedDate.indexOf("-")));
-                int month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-")+1, formattedDate.indexOf("-")+3));
+                int day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
+                int month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
 
                 System.out.println(day);
                 System.out.println(month);
 
-
                 // Mangler null check
-                ArrayList<Entry> data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(1), month, day));     // Virker. Testet med den 15. december 2022
+                try
+                {
+                    data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
 
-                Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
-
-                MyGraph.CreateSeries("Test", data);
-
-                MyGraph.getChart().setLayoutX(350);
-                anchorPane.getChildren().add(MyGraph.getChart());
-
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Ingen data for den valgte dato/SID");
+                }
+                     // Virker. Testet med den 15. december 2022
             }
         });
 
 
 
-        buttonBack.setPrefWidth(50);
+        btnAccept.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                MyGraph.getChart().getData().clear();
+                MyGraph.CreateSeries(choiceID, data);
+            }
+        });
 
-        anchorPane.getChildren().add(buttonBack);
-        anchorPane.getChildren().add(datePicker);
+
+        buttonBack.setPrefWidth(50);
+        btnAccept.setPrefWidth(50);
+        btnAccept.setLayoutY(100);
+        btnAccept.setLayoutX(20);
+        MyGraph.getChart().setLayoutX(350);
+
+
+        anchorPane.getChildren().addAll(buttonBack, btnAccept, datePicker, choiceBox, MyGraph.getChart());
+
 
         return scene;
     }
