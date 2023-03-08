@@ -23,7 +23,6 @@ BestWorst bestWorst = new BestWorst();
         buttonHByH.setPrefHeight(30);
         buttonHByH.setLayoutX(100);
         buttonHByH.setText("Hour by Hour");
-
         return buttonHByH;
     }
     public Button getbuttonMonth()

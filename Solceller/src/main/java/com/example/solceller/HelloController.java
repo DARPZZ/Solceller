@@ -13,7 +13,7 @@ import java.util.jar.JarEntry;
 
 public class HelloController
 {
-    private static ArrayList<Site> sites = new ArrayList<>();
+    public static ArrayList<Site> sites = new ArrayList<>();
     @FXML
     private Label welcomeText;
 
@@ -75,16 +75,9 @@ public class HelloController
                 site.createEntry(id, total, online, offline, month, day, time);
             }
         }
-
-
-        System.out.println(FileHelper.getOnline(site));
-        System.out.println(FileHelper.getOffline(sites.get(0),12));
-        System.out.println(FileHelper.getOffline(sites.get(0),12,15 ));
-        System.out.println(FileHelper.getOnline(sites.get(0),01,15,9));
-        ArrayList<Entry> memme = new ArrayList<>();
-        memme.addAll(FileHelper.getEntry(sites.get(0),12));
-
-        System.out.println("end");
+        int tempp = FileHelper.getOnline(sites.get(0),1,1);
+        int temp = FileHelper.getOffline(sites.get(0),1,1);
+        System.out.println("end ini");
     }
 
     public enum stringIndex{

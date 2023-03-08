@@ -26,11 +26,11 @@ public class FileHelper
     {
         onlineInt = 0;
         int i = 0;
-        for (Entry entry:site.siteEntry.get(month).get(day))
+        for (Entry entry:site.siteEntry.get(month-1).get(day-1))
         {
             try
             {
-                onlineInt += site.siteEntry.get(month).get(day).get(i).getOnline();
+                onlineInt += site.siteEntry.get(month-1).get(day-1).get(i).getOnline();
                 i++;
             }
             catch (Exception e)
@@ -50,7 +50,7 @@ public class FileHelper
         {
             for (ArrayList<Entry> e: site.siteEntry.get(month))
             {
-                onlineInt += getOnline(site,month,i);
+                onlineInt += getOnline(site,month-1,i);
                 i++;
             }
         }
@@ -90,7 +90,7 @@ public class FileHelper
         {
             for (int i = 0; i < hourEnd-hourStart; i++)
             {
-                onlineArray.add(getOffline(site,month,day,j));
+                onlineArray.add(getOffline(site,month-1,day-1,j));
                 j++;
             }
         }
@@ -108,7 +108,7 @@ public class FileHelper
         {
          try
          {
-            onlineArray.add(getOnline(site,month,j));
+            onlineArray.add(getOnline(site,month-1,j));
          }
          catch (Exception e)
          {j++;}
@@ -135,7 +135,7 @@ public class FileHelper
     {
         int offline=0;
         try {
-            site.siteEntry.get(month).get(day).get(hour).getOffline();
+            site.siteEntry.get(month-1).get(day-1).get(hour).getOffline();
         }
         catch (Exception e)
         {}
@@ -147,9 +147,9 @@ public class FileHelper
         int i = 0;
         try
         {
-            for (Entry entry:site.siteEntry.get(month).get(day))
+            for (Entry entry:site.siteEntry.get(month-1).get(day-1))
             {
-                offline += site.siteEntry.get(month).get(day).get(i).getOffline();
+                offline += site.siteEntry.get(month-1).get(day-1).get(i).getOffline();
                 i++;
             }
         }
@@ -168,7 +168,7 @@ public class FileHelper
         {
             for (ArrayList<Entry> e: site.siteEntry.get(month))
             {
-                offline += getOffline(site,month,i);
+                offline += getOffline(site,month-1,i);
                 i++;
             }
         }
@@ -200,7 +200,7 @@ public class FileHelper
     {
         long total=0;
         try {
-            site.siteEntry.get(month).get(day).get(hour).getTotal();
+            site.siteEntry.get(month-1).get(day-1).get(hour).getTotal();
         }
         catch (Exception e)
         {}
@@ -224,7 +224,7 @@ public class FileHelper
         for (int i = 0; i < 25; i++)
         {
             try {
-               entry.add(getEntry(site,month,day,i).get(0));
+               entry.add(getEntry(site,month-1,day-1,i).get(0));
             }
             catch (Exception e)
             {}
@@ -237,7 +237,7 @@ public class FileHelper
         ArrayList<Entry> entry =new ArrayList<>();
         for (int i = 0; i < 32; i++)
         {
-            for ( Entry entr :getEntry(site,month,i))
+            for ( Entry entr :getEntry(site,month-1,i))
             {
                 try
                 {
