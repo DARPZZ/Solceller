@@ -22,7 +22,7 @@ public class HelloApplication extends Application
         stage.setTitle("Solar cell");
         stage.setScene(scene);
         stage.show();
-        HelloController.initializeFromFile();
+        FileHelper.initializeFromFile();
     }
 
 
