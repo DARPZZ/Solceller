@@ -7,7 +7,6 @@ public class Site
 {
     private int siteID;
     public ArrayList<ArrayList<ArrayList<Entry>>> siteEntry = new ArrayList<>();
-    //public ArrayList<Entry> siteEntry;
     public int getSiteID()
         {return this.siteID;}
     public void createEntry(int entryID, long total, int online, int offline, String month, String day, String time)

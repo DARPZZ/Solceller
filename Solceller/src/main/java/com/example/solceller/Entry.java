@@ -24,4 +24,31 @@ public class Entry
         this.time = time;
     }
 
+    public int getEntryID() {
+        return entryID;
+    }
+
+    public long getTotal() {
+        return total;
+    }
+
+    public int getOnline() {
+        return online;
+    }
+
+    public int getOffline() {
+        return offline;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public String getTime() {
+        return time;
+    }
 }

@@ -13,7 +13,6 @@ import java.util.jar.JarEntry;
 
 public class HelloController
 {
-    private static ArrayList<Site> sitesv2 = new ArrayList<>();
     private static ArrayList<Site> sites = new ArrayList<>();
     @FXML
     private Label welcomeText;
@@ -39,7 +38,8 @@ public class HelloController
         boolean sitesChecker;
         fileIn.useDelimiter("\n");
         fileIn.next();
-        for (int i = 0; i < 100; i++) {
+        while (fileIn.hasNext())
+        {
             sitesChecker = false;
             String entry = fileIn.next();
             String[] fullEntry = entry.split("\t");
@@ -77,56 +77,15 @@ public class HelloController
         }
 
 
+        System.out.println(FileHelper.getOnline(site));
+        System.out.println(FileHelper.getOffline(sites.get(0),12));
+        System.out.println(FileHelper.getOffline(sites.get(0),12,15 ));
+        System.out.println(FileHelper.getOnline(sites.get(0),01,15,9));
+        ArrayList<Entry> memme = new ArrayList<>();
+        memme.addAll(FileHelper.getEntry(sites.get(0),12));
 
         System.out.println("end");
     }
-
-
-    /*
-    public static void initializeFromFile()
-    {
-        String filePath = new File("SolcelleData.tsv").getAbsolutePath();
-        File file = new File(filePath);
-        Scanner fileIn;
-        try {
-            fileIn = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-            throw new RuntimeException(e);
-        }
-        fileIn.useDelimiter("\n");
-        fileIn.next();
-        String entry;
-        int index;
-        sitesv2.add(new Site(16019));
-        for (int i = 0; i <100000; i++)
-        {
-            index=0;
-           entry = fileIn.next();
-           String[] fullEntry = entry.split("\t");
-            for (int j = 0; j < sitesv2.size(); j++)
-            {
-                int SID = Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()]);
-                int tempSID = sitesv2.get(j).getSiteID();
-                if (SID ==  tempSID)
-                {
-                    index=j+1;
-                }
-
-            }
-            if (index < 1)
-            {
-                sitesv2.add(new Site(Integer.parseInt(fullEntry[stringIndex.SID.getColumnType()])));
-            }
-
-        }
-        System.out.println("end");
-
-    }
-
-
-     */
-
 
     public enum stringIndex{
         ENTRYID (0),
