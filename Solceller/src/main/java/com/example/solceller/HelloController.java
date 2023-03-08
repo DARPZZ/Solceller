@@ -36,7 +36,7 @@ public class HelloController
         Site site = new Site(16019,true);
         sites.add(site);
         boolean sitesChecker;
-        fileIn.useDelimiter("\n");
+        fileIn.useDelimiter("\r\n");
         fileIn.next();
         while (fileIn.hasNext())
         {
