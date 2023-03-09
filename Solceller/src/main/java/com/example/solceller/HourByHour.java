@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class HourByHour implements iChangeScene
 {
+    findDate date = new findDate();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
     Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
@@ -27,9 +28,15 @@ public class HourByHour implements iChangeScene
 
     public Scene createHourByHourScene()
     {
+
         buttonBack.setPrefWidth(50);
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
+        date.getDatePicker(anchorPane);
+        buttonBack.setPrefWidth(50);
+
+        anchorPane.getChildren().add(buttonBack);
+
         Scene scene = new Scene(anchorPane, 950, 700);
 
         ArrayList<String> choices = new ArrayList<>();

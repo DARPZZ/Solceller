@@ -35,8 +35,4 @@ public class Site
         this.siteID = siteID;
 
     }
-    public Site(int siteID)
-    {
-        this.siteID = siteID;
-    }
 }

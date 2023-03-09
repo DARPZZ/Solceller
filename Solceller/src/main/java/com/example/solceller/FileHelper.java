@@ -26,11 +26,11 @@ public class FileHelper
     {
         onlineInt = 0;
         int i = 0;
-        for (Entry entry:site.siteEntry.get(month).get(day))
+        for (Entry entry:site.siteEntry.get(month-1).get(day-1))
         {
             try
             {
-                onlineInt += site.siteEntry.get(month).get(day).get(i).getOnline();
+                onlineInt += site.siteEntry.get(month-1).get(day-1).get(i).getOnline();
                 i++;
             }
             catch (Exception e)
@@ -45,7 +45,7 @@ public class FileHelper
     public static int getOnline(Site site, int month)
     {
         onlineInt =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<Entry> e: site.siteEntry.get(month))
@@ -64,7 +64,7 @@ public class FileHelper
     public static int getOnline(Site site)
     {
         onlineInt =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<ArrayList<Entry>> e: site.siteEntry)
@@ -90,7 +90,7 @@ public class FileHelper
         {
             for (int i = 0; i < hourEnd-hourStart; i++)
             {
-                onlineArray.add(getOffline(site,month,day,j));
+                onlineArray.add(getOffline(site,month-1,day-1,j));
                 j++;
             }
         }
@@ -108,7 +108,7 @@ public class FileHelper
         {
          try
          {
-            onlineArray.add(getOnline(site,month,j));
+            onlineArray.add(getOnline(site,month-1,j));
          }
          catch (Exception e)
          {j++;}
@@ -135,7 +135,7 @@ public class FileHelper
     {
         int offline=0;
         try {
-            site.siteEntry.get(month).get(day).get(hour).getOffline();
+            site.siteEntry.get(month-1).get(day-1).get(hour).getOffline();
         }
         catch (Exception e)
         {}
@@ -147,9 +147,9 @@ public class FileHelper
         int i = 0;
         try
         {
-            for (Entry entry:site.siteEntry.get(month).get(day))
+            for (Entry entry:site.siteEntry.get(month-1).get(day-1))
             {
-                offline += site.siteEntry.get(month).get(day).get(i).getOffline();
+                offline += site.siteEntry.get(month-1).get(day-1).get(i).getOffline();
                 i++;
             }
         }
@@ -163,10 +163,10 @@ public class FileHelper
     public static int getOffline(Site site, int month)
     {
         int offline =0;
-        int i=0;
+        int i=1;
         try
         {
-            for (ArrayList<Entry> e: site.siteEntry.get(month))
+            for (ArrayList<Entry> e: site.siteEntry.get(month-1))
             {
                 offline += getOffline(site,month,i);
                 i++;
@@ -179,7 +179,7 @@ public class FileHelper
     public static int getOffline(Site site)
     {
         int offline =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<ArrayList<Entry>> e: site.siteEntry)
@@ -200,7 +200,7 @@ public class FileHelper
     {
         long total=0;
         try {
-            site.siteEntry.get(month).get(day).get(hour).getTotal();
+            site.siteEntry.get(month-1).get(day-1).get(hour).getTotal();
         }
         catch (Exception e)
         {}
@@ -221,7 +221,7 @@ public class FileHelper
     public static ArrayList<Entry> getEntry(Site site, int month, int day)
     {
         ArrayList<Entry> entry = new ArrayList<>();
-        for (int i = 0; i < 25; i++)
+        for (int i = 1; i < 25; i++)
         {
             try {
                entry.add(getEntry(site,month,day,i).get(0));
@@ -235,7 +235,7 @@ public class FileHelper
     public static ArrayList<Entry> getEntry(Site site, int month)
     {
         ArrayList<Entry> entry =new ArrayList<>();
-        for (int i = 0; i < 32; i++)
+        for (int i = 1; i < 32; i++)
         {
             for ( Entry entr :getEntry(site,month,i))
             {

@@ -3,17 +3,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class BestWorst implements iChangeScene
 {
+    findDate date = new findDate();
     Button buttonBack = new Button("Back");
     public Scene createBestWorstScene()
     {
-        buttonBack.setPrefWidth(50);
         AnchorPane anchorPane = new AnchorPane();
+        date.getDatePicker(anchorPane);
+        buttonBack.setPrefWidth(50);
+
         anchorPane.getChildren().addAll(buttonBack);
         Scene scene = new Scene(anchorPane, 950, 700);
         return scene;
