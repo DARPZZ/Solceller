@@ -26,13 +26,16 @@ public class HourByHour implements iChangeScene
     public Scene createHourByHourScene()
     {
 
-        buttonBack.setPrefWidth(50);
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
 
-        buttonBack.setPrefWidth(50);
+        buttonBack.setPrefWidth(75);
+        buttonBack.setLayoutX(10);
+
 
         Scene scene = new Scene(anchorPane, 1000, 500);
+        String css = this.getClass().getResource("/basicstyle.css").toExternalForm();
+        scene.getStylesheets().add(css);
 
         ArrayList<String> choices = new ArrayList<>();
         for (int i = 0; i < HelloController.sites.size(); i++)
@@ -41,6 +44,7 @@ public class HourByHour implements iChangeScene
         }
         ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
 
+            choiceBox.setId("choice");
         choiceBox.setOnAction(actionEvent ->
         {
             choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")))-1;
@@ -68,7 +72,7 @@ public class HourByHour implements iChangeScene
             MyGraph.CreateSeriesHour("SID: " + choiceID, data);
         });
 
-        buttonBack.setPrefWidth(50);
+
         btnAccept.setPrefWidth(75);
         btnAccept.setLayoutY(330);
         btnAccept.setLayoutX(10);

@@ -13,10 +13,12 @@ public class BestWorst implements iChangeScene
     public Scene createBestWorstScene()
     {
         AnchorPane anchorPane = new AnchorPane();
-        buttonBack.setPrefWidth(50);
-
+        buttonBack.setPrefWidth(75);
+        buttonBack.setLayoutX(10);
         anchorPane.getChildren().addAll(buttonBack);
         Scene scene = new Scene(anchorPane, 1000, 500);
+        String css = this.getClass().getResource("/basicstyle.css").toExternalForm();
+        scene.getStylesheets().add(css);
         return scene;
     }
 

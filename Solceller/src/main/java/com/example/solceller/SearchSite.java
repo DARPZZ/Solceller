@@ -13,7 +13,7 @@ public class SearchSite
     {
         choiceBox.setLayoutX(10);
         choiceBox.setLayoutY(270);
-        choiceBox.setPrefWidth(100);
+        choiceBox.setPrefWidth(150);
 
         Label indSite = new Label("Enter site");
         indSite.setLayoutY(250);
@@ -28,6 +28,7 @@ public class SearchSite
         TextField SearchField = new TextField();
         SearchField.setLayoutX(10);
         SearchField.setLayoutY(210);
+        SearchField.setPrefWidth(150);
 
         SearchField.setOnKeyPressed(new EventHandler<KeyEvent>()
         {
