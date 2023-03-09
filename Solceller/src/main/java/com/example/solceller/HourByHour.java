@@ -76,14 +76,11 @@ public class HourByHour implements iChangeScene
         btnAccept.setPrefWidth(75);
         btnAccept.setLayoutY(330);
         btnAccept.setLayoutX(10);
-        MyGraph.getChart().setLayoutX(350);
-
         Label indTDate = new Label("Enter Date");
         indTDate.setLayoutY(130);
         indTDate.setLayoutX(10);
 
         anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox, MyGraph.getChart());
-
 
         return scene;
     }

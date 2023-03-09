@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -60,6 +61,16 @@ BestWorst bestWorst = new BestWorst();
         imageView.setX(1);
         return imageView;
     }
+
+
+    public Label getLabelHeader(Scene scene)
+    {
+        Label label = new Label("Bæredygtig Energi fra Solceller");
+        label.setLayoutX((scene.getWidth() / 2 -225));
+        label.setLayoutY(50);
+        return label;
+    }
+
         //endregion
     private Button buttonHByH = new Button();
     private Button buttonMonth = new Button();

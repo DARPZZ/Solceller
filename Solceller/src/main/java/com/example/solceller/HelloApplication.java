@@ -22,7 +22,7 @@ public class HelloApplication extends Application
         scene.getStylesheets().add(css);
 
 
-        anchorPane.getChildren().addAll(mainMenu.getButton(),mainMenu.getbuttonMonth(),mainMenu.getBestWorstButton(), mainMenu.getImageView());
+        anchorPane.getChildren().addAll(mainMenu.getButton(),mainMenu.getbuttonMonth(),mainMenu.getBestWorstButton(), mainMenu.getImageView(), mainMenu.getLabelHeader(scene));
         stage.setTitle("Solar cell");
         stage.setScene(scene);
         stage.show();
