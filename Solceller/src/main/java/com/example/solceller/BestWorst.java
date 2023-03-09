@@ -13,7 +13,6 @@ public class BestWorst implements iChangeScene
     public Scene createBestWorstScene()
     {
         AnchorPane anchorPane = new AnchorPane();
-        date.getDatePicker(anchorPane);
         buttonBack.setPrefWidth(50);
 
         anchorPane.getChildren().addAll(buttonBack);
