@@ -54,7 +54,7 @@ BestWorst bestWorst = new BestWorst();
         Image img = new Image(new FileInputStream("Solceller/src/main/java/Billeder/solar-cells-491701.jpg"));
         ImageView imageView = new ImageView();
         imageView.setImage(img);
-        imageView.setFitHeight(675);
+        imageView.setFitHeight(500);
         imageView.setFitWidth(1000);
         imageView.setY(35);
         imageView.setX(1);

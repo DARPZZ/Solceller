@@ -26,10 +26,13 @@ public class Month implements iChangeScene
     int monthIndex;
     ArrayList<Entry> data;
     public Scene createMonthScene() {
-        buttonBack.setPrefWidth(50);
+
+        buttonBack.setPrefWidth(75);
+        buttonBack.setLayoutX(10);
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 1000, 500);
-
+        String css = this.getClass().getResource("/basicstyle.css").toExternalForm();
+        scene.getStylesheets().add(css);
 
         ArrayList<String> choices = new ArrayList<>();
         for (int i = 0; i < HelloController.sites.size(); i++)
@@ -37,6 +40,7 @@ public class Month implements iChangeScene
             choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
         }
         ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
+        choiceBox.setId("choice");
 
         choiceBox.setOnAction(actionEvent -> {
             choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")))-1;
@@ -61,11 +65,13 @@ public class Month implements iChangeScene
 
         choiceMonth.setLayoutX(10);
         choiceMonth.setLayoutY(150);
-        choiceMonth.setPrefWidth(100);
+        choiceMonth.setPrefWidth(150);
+        choiceMonth.setId("choice");
 
         Label indTDate = new Label("Enter Month");
         indTDate.setLayoutY(130);
         indTDate.setLayoutX(10);
+
 
         // Button "accept" creates an arrayList with chosen values
         btnAccept.setOnAction(actionEvent ->
