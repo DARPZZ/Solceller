@@ -35,6 +35,10 @@ public class Graph
             case AREA_CHART -> this.chart = new AreaChart<>(x_AXIS, y_AXIS);
         }
         this.chart.setTitle(title);
+        this.chart.setScaleX(1.2);
+        this.chart.setScaleY(1.2);
+        this.chart.setLayoutX(300);
+        this.chart.setLayoutY(50);
     }
 
     /**
