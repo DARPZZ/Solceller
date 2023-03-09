@@ -3,10 +3,7 @@ import Model.Graph;
 import Model.Type;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -24,7 +21,6 @@ public class HourByHour implements iChangeScene
     int month;
     String choiceID;
     ArrayList<Entry> data;
-
 
 
     public Scene createHourByHourScene()
@@ -53,13 +49,10 @@ public class HourByHour implements iChangeScene
             System.out.println("choiceID " + choiceID);
         });
 
-
-
-
-
         date.searchSite(anchorPane,choiceBox);
         DatePicker datePicker = new DatePicker();
-        datePicker.setLayoutY(30);
+        datePicker.setLayoutY(150);
+        datePicker.setLayoutX(10);
         datePicker.setOnAction(actionEvent ->
         {
             String formattedDate = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -76,12 +69,16 @@ public class HourByHour implements iChangeScene
         });
 
         buttonBack.setPrefWidth(50);
-        btnAccept.setPrefWidth(50);
-        btnAccept.setLayoutY(100);
-        btnAccept.setLayoutX(20);
+        btnAccept.setPrefWidth(75);
+        btnAccept.setLayoutY(330);
+        btnAccept.setLayoutX(10);
         MyGraph.getChart().setLayoutX(350);
 
-        anchorPane.getChildren().addAll(buttonBack, btnAccept, datePicker, choiceBox, MyGraph.getChart());
+        Label indTDate = new Label("Enter Date");
+        indTDate.setLayoutY(130);
+        indTDate.setLayoutX(10);
+
+        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox, MyGraph.getChart());
 
 
         return scene;

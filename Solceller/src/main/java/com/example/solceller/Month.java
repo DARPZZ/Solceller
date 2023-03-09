@@ -5,7 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -14,6 +16,7 @@ import java.util.TreeMap;
 
 public class Month implements iChangeScene
 {
+    findDate findDate = new findDate();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
     Graph MyGraph = new Graph("Production for month", "Day", "Production", Type.BAR_CHART);
@@ -33,7 +36,7 @@ public class Month implements iChangeScene
         {
             choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
         }
-        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
+        ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
 
         choiceBox.setOnAction(actionEvent -> {
             choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")))-1;
@@ -42,9 +45,7 @@ public class Month implements iChangeScene
             System.out.println("choiceID " + choiceID);
         });
 
-        choiceBox.setLayoutX(20);
-        choiceBox.setLayoutY(70);
-        choiceBox.setPrefWidth(100);
+        findDate.searchSite(anchorPane,choiceBox);
 
         ObservableList<MonthEnum> monthsList = FXCollections.observableArrayList(MonthEnum.values());
 
@@ -58,9 +59,13 @@ public class Month implements iChangeScene
             System.out.println("choiceMonth " + month);
         });
 
-        choiceMonth.setLayoutX(20);
-        choiceMonth.setLayoutY(200);
+        choiceMonth.setLayoutX(10);
+        choiceMonth.setLayoutY(150);
         choiceMonth.setPrefWidth(100);
+
+        Label indTDate = new Label("Enter Month");
+        indTDate.setLayoutY(130);
+        indTDate.setLayoutX(10);
 
         // Button "accept" creates an arrayList with chosen values
         btnAccept.setOnAction(actionEvent ->
@@ -71,13 +76,12 @@ public class Month implements iChangeScene
             MyGraph.CreateSeriesDay("SID: " + choiceID + " for " + month, dailyProduction);
         });
 
-        buttonBack.setPrefWidth(50);
-        btnAccept.setPrefWidth(50);
-        btnAccept.setLayoutY(100);
-        btnAccept.setLayoutX(20);
+        btnAccept.setPrefWidth(75);
+        btnAccept.setLayoutY(330);
+        btnAccept.setLayoutX(10);
         MyGraph.getChart().setLayoutX(350);
 
-        anchorPane.getChildren().addAll(buttonBack, btnAccept, choiceMonth, choiceBox, MyGraph.getChart());
+        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, choiceMonth, choiceBox, MyGraph.getChart());
 
 
         return scene;
