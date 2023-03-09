@@ -57,7 +57,8 @@ public class Month implements iChangeScene
 
         // Creates ComboBox with choices of month and set instance variables for month
         ComboBox<MonthEnum> choiceMonth = new ComboBox<>(FXCollections.observableList(monthsList));
-        choiceMonth.setOnAction(actionEvent -> {
+        choiceMonth.setOnAction(actionEvent ->
+        {
             monthIndex = Integer.parseInt(choiceMonth.getValue().MONTH_NO.substring(0, choiceMonth.getValue().getMonthNo().indexOf(" ")));
             month = choiceMonth.getValue().getMonthNo().substring(choiceMonth.getValue().getMonthNo().indexOf("-")+2);
             System.out.println("monthIndex " + monthIndex);
