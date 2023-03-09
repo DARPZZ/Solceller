@@ -18,7 +18,7 @@ public class MainMenu implements iChangeScene
 {
     DatePicker datePicker = new DatePicker();
 HourByHour hourByHour = new HourByHour();
-Månede månede = new Månede();
+Month month = new Month();
 BestWorst bestWorst = new BestWorst();
 
     //region getter and buttons attributes
@@ -69,7 +69,7 @@ BestWorst bestWorst = new BestWorst();
 public void changescene(Stage stage, Scene scene)
 {
     hourByHour.changescene(stage,scene);
-    månede.changescene(stage,scene);
+    month.changescene(stage,scene);
     bestWorst.changescene(stage,scene);
     buttonHByH.setOnAction(new EventHandler<ActionEvent>()
     {
@@ -89,7 +89,7 @@ public void changescene(Stage stage, Scene scene)
         @Override
         public void handle(ActionEvent event)
         {
-            Scene createmånedScene = månede.createmånedScene();
+            Scene createmånedScene = month.createMonthScene();
             // set the new scene on the primary stage
             stage.setScene(createmånedScene);
         }

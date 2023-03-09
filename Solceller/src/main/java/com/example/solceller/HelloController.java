@@ -49,7 +49,7 @@ public class HelloController
             int id = Integer.parseInt(fullEntry[stringIndex.ENTRYID.getColumnType()]);
             long total = Long.parseLong(fullEntry[stringIndex.TOTAL.getColumnType()]);
             int online = Integer.parseInt(fullEntry[stringIndex.ONLINE.getColumnType()]);
-            int offline = Integer.parseInt((fullEntry[stringIndex.OFFLINE.getColumnType()]));
+            int offline = Integer.parseInt(fullEntry[stringIndex.OFFLINE.getColumnType()]);
             String month = date[dateIndex.MONTH.getdateIndex()];
             String day = date[dateIndex.DAY.getdateIndex()].substring(0, 2);
             int meme = entry.lastIndexOf("T");
