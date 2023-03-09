@@ -6,13 +6,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class HelloApplication extends Application
 {
     @Override
     public void start(Stage stage) throws IOException
     {
-        HelloController.initializeFromFile();
+        FileHelper.initializeFromFile();
         stage.setResizable(false);
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 1000, 500);

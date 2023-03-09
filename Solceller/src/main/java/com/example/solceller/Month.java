@@ -35,9 +35,9 @@ public class Month implements iChangeScene
         scene.getStylesheets().add(css);
 
         ArrayList<String> choices = new ArrayList<>();
-        for (int i = 0; i < HelloController.sites.size(); i++)
+        for (int i = 0; i < FileHelper.sites.size(); i++)
         {
-            choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
+            choices.add(i+1 + ". " + FileHelper.sites.get(i).getSiteID());
         }
         ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
         choiceBox.setId("choice");
@@ -76,7 +76,7 @@ public class Month implements iChangeScene
         // Button "accept" creates an arrayList with chosen values
         btnAccept.setOnAction(actionEvent ->
         {
-            data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), monthIndex));
+            data = new ArrayList<>(FileHelper.getEntry(FileHelper.sites.get(choiceIndex), monthIndex));
             TreeMap<String, Integer> dailyProduction = fillMap(data);
             MyGraph.getChart().getData().clear();
             MyGraph.CreateSeries("SID: " + choiceID, dailyProduction);
@@ -119,7 +119,7 @@ public class Month implements iChangeScene
         NOVEMBER("11 - November"),
         DECEMBER("12 - December");
 
-        private final String MONTH_NO;
+        public final String MONTH_NO;
 
         MonthEnum (String monthNo)
         {
@@ -137,7 +137,7 @@ public class Month implements iChangeScene
      * @param entryArrayList An arrayList containing Entry object to be added to TreeMap
      * @return TreeMap filled with day as key and production as value
      */
-    public TreeMap<String, Integer> fillMap(ArrayList<Entry> entryArrayList)
+    public static TreeMap<String, Integer> fillMap(ArrayList<Entry> entryArrayList)
     {
         TreeMap<String, Integer> dailyTotals = new TreeMap<>();
         String day = "";
