@@ -80,6 +80,7 @@ public class Graph
             try
             {
                 seriesName.getData().add(new XYChart.Data<>(value.getKey(), value.getValue()));
+                System.out.println("Key: " + value.getKey() + " - Value: " + value.getValue());
             }
             catch (Exception e)
             {

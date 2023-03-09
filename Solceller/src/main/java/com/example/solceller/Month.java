@@ -16,7 +16,7 @@ public class Month implements iChangeScene
 {
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
-    Graph MyGraph = new Graph("Production for month", "Day", "Production", Type.BAR_CHART);
+    Graph MyGraph = new Graph("Production for month: ", "Day", "Production", Type.BAR_CHART);
     int choiceIndex;
     String choiceID;
     String month;
@@ -68,7 +68,8 @@ public class Month implements iChangeScene
             data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), monthIndex));
             TreeMap<String, Integer> dailyProduction = fillMap(data);
             MyGraph.getChart().getData().clear();
-            MyGraph.CreateSeries("SID: " + choiceID + " for " + month, dailyProduction);
+            MyGraph.CreateSeries("SID: " + choiceID, dailyProduction);
+            MyGraph.getChart().setTitle("Production for month: " + month);
         });
 
         buttonBack.setPrefWidth(50);
