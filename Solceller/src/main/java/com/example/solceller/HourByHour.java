@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -16,7 +15,8 @@ public class HourByHour implements iChangeScene
     SearchSite date = new SearchSite();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
-    Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
+    Graph myGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
+    Graph tempGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
     int choiceIndex;
     int day;
     int month;
@@ -69,8 +69,11 @@ public class HourByHour implements iChangeScene
         btnAccept.setOnAction(actionEvent ->
         {
             data = new ArrayList<>(FileHelper.getEntry(FileHelper.sites.get(choiceIndex), month, day));
-            MyGraph.getChart().getData().clear();
-            MyGraph.CreateSeriesHour("SID: " + choiceID, data);
+            myGraph.getChart().getData().clear();
+            myGraph.CreateSeriesHour("SID: " + choiceID, data);
+            anchorPane.getChildren().remove(myGraph.getChart());
+            anchorPane.getChildren().remove(tempGraph.getChart());
+            anchorPane.getChildren().add(myGraph.getChart());
         });
 
 
@@ -81,13 +84,13 @@ public class HourByHour implements iChangeScene
         indTDate.setLayoutY(130);
         indTDate.setLayoutX(10);
 
-        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox, MyGraph.getChart());
+        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox, tempGraph.getChart());
 
         return scene;
     }
 
     /**
-     * This section cchanges back to the main scene
+     * This section changes back to the main scene
      * @param stage
      * @param scene
      */

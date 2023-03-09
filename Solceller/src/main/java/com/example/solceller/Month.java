@@ -19,7 +19,8 @@ public class Month implements iChangeScene
     SearchSite findDate = new SearchSite();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
-    Graph MyGraph = new Graph("Production for month: ", "Day", "Production", Type.BAR_CHART);
+    Graph myGraph = new Graph("Production for month: ", "Day", "Production", Type.BAR_CHART);
+    Graph tempGraph = new Graph("Production for month: ", "Day", "Production", Type.BAR_CHART);
     int choiceIndex;
     String choiceID;
     String month;
@@ -78,17 +79,19 @@ public class Month implements iChangeScene
         {
             data = new ArrayList<>(FileHelper.getEntry(FileHelper.sites.get(choiceIndex), monthIndex));
             TreeMap<String, Integer> dailyProduction = fillMap(data);
-            MyGraph.getChart().getData().clear();
-            MyGraph.CreateSeries("SID: " + choiceID, dailyProduction);
-            MyGraph.getChart().setTitle("Production for month: " + month);
+            myGraph.getChart().getData().clear();
+            myGraph.CreateSeries("SID: " + choiceID, dailyProduction);
+            myGraph.getChart().setTitle("Production for month: " + month);
+            anchorPane.getChildren().remove(myGraph.getChart());
+            anchorPane.getChildren().remove(tempGraph.getChart());
+            anchorPane.getChildren().add(myGraph.getChart());
         });
 
         btnAccept.setPrefWidth(75);
         btnAccept.setLayoutY(330);
         btnAccept.setLayoutX(10);
-        MyGraph.getChart().setLayoutX(350);
 
-        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, choiceMonth, choiceBox, MyGraph.getChart());
+        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, choiceMonth, choiceBox, tempGraph.getChart());
 
 
         return scene;
