@@ -35,6 +35,10 @@ public class Graph
             case AREA_CHART -> this.chart = new AreaChart<>(x_AXIS, y_AXIS);
         }
         this.chart.setTitle(title);
+        this.chart.setScaleX(1.2);
+        this.chart.setScaleY(1.2);
+        this.chart.setLayoutX(300);
+        this.chart.setLayoutY(50);
     }
 
     /**
@@ -66,7 +70,7 @@ public class Graph
      * @param name The name of the series
      * @param productionDay An TreeMap containing the values for the series
      */
-    public void CreateSeriesDay(String name, TreeMap<String, Integer> productionDay)
+    public void CreateSeries(String name, TreeMap<String, Integer> productionDay)
     {
         XYChart.Series<String, Number> seriesName = new XYChart.Series<>();
         seriesName.setName(name);

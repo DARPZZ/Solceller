@@ -4,6 +4,7 @@ import Model.Type;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
@@ -33,10 +34,8 @@ public class HourByHour implements iChangeScene
         buttonBack.setPrefWidth(50);
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
-        date.getDatePicker(anchorPane);
-        buttonBack.setPrefWidth(50);
 
-        anchorPane.getChildren().add(buttonBack);
+        buttonBack.setPrefWidth(50);
 
         Scene scene = new Scene(anchorPane, 950, 700);
 
@@ -45,7 +44,7 @@ public class HourByHour implements iChangeScene
         {
             choices.add(i+1 + ". " + FileHelper.sites.get(i).getSiteID());
         }
-        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
+        ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
 
         choiceBox.setOnAction(actionEvent ->
         {
@@ -55,17 +54,17 @@ public class HourByHour implements iChangeScene
             System.out.println("choiceID " + choiceID);
         });
 
-        choiceBox.setLayoutX(20);
-        choiceBox.setLayoutY(70);
-        choiceBox.setPrefWidth(100);
 
 
+
+
+        date.searchSite(anchorPane,choiceBox);
         DatePicker datePicker = new DatePicker();
         datePicker.setLayoutY(30);
         datePicker.setOnAction(actionEvent ->
         {
             String formattedDate = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
+            day = Integer.parseInt(formattedDate.substring(0, formattedDate.indexOf("-")));
             month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
 
         });
