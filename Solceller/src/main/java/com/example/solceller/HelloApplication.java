@@ -23,6 +23,10 @@ public class HelloApplication extends Application
         stage.setScene(scene);
         stage.show();
         HelloController.initializeFromFile();
+
+        //test for Dataprocessing class - output is min/max values in a month (in this case january)
+        System.out.println(DataProcessing.minMaxProdValues(HelloController.sites.get(0),1 ).getMax());
+        System.out.println(DataProcessing.minMaxProdValues(HelloController.sites.get(0),1 ).getMin());
     }
 
 
