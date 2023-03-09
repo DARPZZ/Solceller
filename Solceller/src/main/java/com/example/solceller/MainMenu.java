@@ -1,28 +1,24 @@
 package com.example.solceller;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.time.format.DateTimeFormatter;
 
 public class MainMenu implements iChangeScene
 {
-    DatePicker datePicker = new DatePicker();
 HourByHour hourByHour = new HourByHour();
 Month month = new Month();
 BestWorst bestWorst = new BestWorst();
 
-    //region getter and buttons attributes
+    //region getter and attributes
     public Button getButton()
     {
         buttonHByH.setPrefWidth(200);
@@ -68,6 +64,7 @@ BestWorst bestWorst = new BestWorst();
         Label label = new Label("Bæredygtig Energi fra Solceller");
         label.setLayoutX((scene.getWidth() / 2 -225));
         label.setLayoutY(50);
+        label.setId("title");
         return label;
     }
 
@@ -77,62 +74,35 @@ BestWorst bestWorst = new BestWorst();
     private Button bestWorstButton = new Button();
     private final ImageView imageView = new ImageView();
 
-public void changescene(Stage stage, Scene scene)
+    /**
+     * Changes from the diffrent scenes
+     * @param stage Getting the diffrent stages
+     * @param scene Getting the diffrent scenes
+     */
+    public void changescene(Stage stage, Scene scene)
 {
     hourByHour.changescene(stage,scene);
     month.changescene(stage,scene);
     bestWorst.changescene(stage,scene);
-    buttonHByH.setOnAction(new EventHandler<ActionEvent>()
+    buttonHByH.setOnAction(event ->
     {
-        @Override
-        public void handle(ActionEvent event)
         {
-            {
-                // create a new scene for the hour by hour view
-                Scene sceneHourByHour = hourByHour.createHourByHourScene();
-                // set the new scene on the primary stage
-                stage.setScene(sceneHourByHour);
-        }
+            Scene sceneHourByHour = hourByHour.createHourByHourScene();
+            stage.setScene(sceneHourByHour);
     }
-    });
-    buttonMonth.setOnAction(new EventHandler<ActionEvent>()
+});
+    buttonMonth.setOnAction(event ->
     {
-        @Override
-        public void handle(ActionEvent event)
-        {
-            Scene createmånedScene = month.createMonthScene();
-            // set the new scene on the primary stage
-            stage.setScene(createmånedScene);
-        }
-    });
-    bestWorstButton.setOnAction(new EventHandler<ActionEvent>()
-    {
-        @Override
-        public void handle(ActionEvent event)
-        {
-            Scene createBestWorstScene = bestWorst.createBestWorstScene();
-            // set the new scene on the primary stage
-            stage.setScene(createBestWorstScene);
-        }
+        Scene createmånedScene = month.createMonthScene();
 
+        stage.setScene(createmånedScene);
+    });
+    bestWorstButton.setOnAction(event ->
+    {
+        Scene createBestWorstScene = bestWorst.createBestWorstScene();
+
+        stage.setScene(createBestWorstScene);
     });
 }
-public DatePicker findDate()
-{
-    datePicker.setOnKeyPressed(new EventHandler<KeyEvent>()
-    {
-        @Override
-        public void handle(KeyEvent keyEvent)
-        {
-            if (keyEvent.getCode().equals(KeyCode.ENTER)){
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM");
-                String formattedValue = datePicker.getValue().format(formatter);
-                System.out.println(formattedValue);
-
-            }
-        }
-    });
- return datePicker;
-}
 }

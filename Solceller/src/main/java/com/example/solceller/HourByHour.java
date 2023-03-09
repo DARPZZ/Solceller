@@ -26,7 +26,6 @@ public class HourByHour implements iChangeScene
 
     public Scene createHourByHourScene()
     {
-
         // create the content for the hour by hour view
         AnchorPane anchorPane = new AnchorPane();
 

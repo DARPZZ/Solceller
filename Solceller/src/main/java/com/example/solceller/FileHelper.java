@@ -251,8 +251,6 @@ public class FileHelper
                 {}
 
             }
-
-
         }
 
         return entry;
