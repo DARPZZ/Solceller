@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -16,6 +18,7 @@ import java.util.TreeMap;
 
 public class BestWorst implements iChangeScene
 {
+
     SearchSite date = new SearchSite();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
@@ -27,6 +30,9 @@ public class BestWorst implements iChangeScene
     public Scene createBestWorstScene()
     {
         AnchorPane anchorPane = new AnchorPane();
+        Label indTDate = new Label("Enter Month");
+        indTDate.setLayoutY(130);
+        indTDate.setLayoutX(10);
         buttonBack.setPrefWidth(50);
         Scene scene = new Scene(anchorPane, 950, 700);
 
@@ -35,18 +41,14 @@ public class BestWorst implements iChangeScene
         {
             choices.add(i+1 + ". " + FileHelper.sites.get(i).getSiteID());
         }
-        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
-
+        ChoiceBox<String> choiceBox = new ChoiceBox<>(FXCollections.observableList(choices));
+        date.searchSite(anchorPane,choiceBox);
         choiceBox.setOnAction(actionEvent -> {
             choiceIndex = Integer.parseInt(choiceBox.getValue().substring(0, choiceBox.getValue().indexOf(".")))-1;
             choiceID = choiceBox.getValue().substring(choiceBox.getValue().indexOf(" ")+1);
             System.out.println("choiceIndex " + choiceIndex);
             System.out.println("choiceID " + choiceID);
         });
-
-        choiceBox.setLayoutX(20);
-        choiceBox.setLayoutY(70);
-        choiceBox.setPrefWidth(100);
 
         ObservableList<Month.MonthEnum> monthsList = FXCollections.observableArrayList(Month.MonthEnum.values());
 
@@ -59,9 +61,10 @@ public class BestWorst implements iChangeScene
             System.out.println("choiceMonth " + month);
         });
 
-        choiceMonth.setLayoutX(20);
-        choiceMonth.setLayoutY(200);
-        choiceMonth.setPrefWidth(100);
+        choiceMonth.setLayoutX(10);
+        choiceMonth.setLayoutY(150);
+        choiceMonth.setPrefWidth(150);
+        choiceBox.setId("choice");
 
         // Button "accept" creates an arrayList with chosen values
         btnAccept.setOnAction(actionEvent ->
@@ -80,15 +83,12 @@ public class BestWorst implements iChangeScene
 
         });
 
-        buttonBack.setPrefWidth(50);
-        btnAccept.setPrefWidth(75);
-        btnAccept.setLayoutY(100);
-        btnAccept.setLayoutX(20);
-
-        anchorPane.getChildren().addAll(buttonBack, btnAccept, choiceMonth, choiceBox, MyGraph2.getChart());
-
         buttonBack.setPrefWidth(75);
         buttonBack.setLayoutX(10);
+        btnAccept.setPrefWidth(75);
+        btnAccept.setLayoutX(10);
+        btnAccept.setLayoutY(330);
+        anchorPane.getChildren().addAll(buttonBack, btnAccept, choiceMonth, choiceBox, MyGraph2.getChart(),indTDate);
         String css = this.getClass().getResource("/basicstyle.css").toExternalForm();
         scene.getStylesheets().add(css);
         return scene;
