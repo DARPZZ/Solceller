@@ -1,10 +1,7 @@
 package com.example.solceller;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,12 +15,29 @@ public class findDate
     public ChoiceBox searchSite(AnchorPane anchorPane, ChoiceBox choiceBox)
     {
         choiceBox.setLayoutX(10);
-        choiceBox.setLayoutY(325);
+        choiceBox.setLayoutY(270);
         choiceBox.setPrefWidth(100);
+
+
+        Label indSite = new Label("Enter site");
+        indSite.setLayoutY(250);
+        indSite.setLayoutX(10);
+
+
+
+
+
+
+        Label indTSearch = new Label("Search site");
+        indTSearch.setLayoutX(10);
+        indTSearch.setLayoutY(190);
+
+
+
 
         TextField SearchField = new TextField();
         SearchField.setLayoutX(10);
-        SearchField.setLayoutY(300);
+        SearchField.setLayoutY(210);
 
         SearchField.setOnKeyPressed(new EventHandler<KeyEvent>()
         {
@@ -45,7 +59,7 @@ public class findDate
                 }
             }
         });
-        anchorPane.getChildren().add(SearchField);
+        anchorPane.getChildren().addAll(SearchField,indTSearch,indSite);
 
         return choiceBox;
 
