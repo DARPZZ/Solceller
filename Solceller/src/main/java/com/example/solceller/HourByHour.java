@@ -66,6 +66,9 @@ public class HourByHour implements iChangeScene
             data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
             MyGraph.getChart().getData().clear();
             MyGraph.CreateSeriesHour("SID: " + choiceID, data);
+            anchorPane.getChildren().add(MyGraph.getChart());
+            anchorPane.getChildren().add(MyGraph.getChart());
+
         });
 
         buttonBack.setPrefWidth(50);
@@ -78,7 +81,7 @@ public class HourByHour implements iChangeScene
         indTDate.setLayoutY(130);
         indTDate.setLayoutX(10);
 
-        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox, MyGraph.getChart());
+        anchorPane.getChildren().addAll(buttonBack, indTDate, btnAccept, datePicker, choiceBox);
 
 
         return scene;

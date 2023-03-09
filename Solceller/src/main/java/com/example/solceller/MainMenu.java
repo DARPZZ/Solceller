@@ -4,11 +4,11 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,9 +17,9 @@ import java.time.format.DateTimeFormatter;
 public class MainMenu implements iChangeScene
 {
     DatePicker datePicker = new DatePicker();
-HourByHour hourByHour = new HourByHour();
-Month month = new Month();
-BestWorst bestWorst = new BestWorst();
+    HourByHour hourByHour = new HourByHour();
+    Month month = new Month();
+    BestWorst bestWorst = new BestWorst();
 
     //region getter and buttons attributes
     public Button getButton()
@@ -32,7 +32,6 @@ BestWorst bestWorst = new BestWorst();
     }
     public Button getbuttonMonth()
     {
-
         buttonMonth.setPrefWidth(200);
         buttonMonth.setPrefHeight(30);
         buttonMonth.setLayoutX(350);
@@ -42,7 +41,6 @@ BestWorst bestWorst = new BestWorst();
 
     public Button getBestWorstButton()
     {
-
         bestWorstButton.setPrefWidth(200);
         bestWorstButton.setPrefHeight(30);
         bestWorstButton.setLayoutX(600);
@@ -59,6 +57,15 @@ BestWorst bestWorst = new BestWorst();
         imageView.setY(35);
         imageView.setX(1);
         return imageView;
+    }
+
+    public Label getLabelHeader(Scene scene)
+    {
+        Label label = new Label("Bæredygtig Energi fra Solceller");
+        label.setStyle("-fx-text-fill:BLACK; -fx-font-size: 30; -fx-font-family: 'Eras Bold ITC'; -fx-font-weight: bold");
+        label.setLayoutX((scene.getWidth() / 2 -225));
+        label.setLayoutY(50);
+        return label;
     }
         //endregion
     private Button buttonHByH = new Button();

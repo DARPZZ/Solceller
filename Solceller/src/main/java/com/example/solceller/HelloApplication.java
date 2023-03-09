@@ -18,12 +18,10 @@ public class HelloApplication extends Application
         Scene scene = new Scene(anchorPane, 1000, 500);
         MainMenu mainMenu = new MainMenu();
         mainMenu.changescene(stage, anchorPane.getScene());
-        anchorPane.getChildren().addAll(mainMenu.getButton(),mainMenu.getbuttonMonth(),mainMenu.getBestWorstButton(), mainMenu.getImageView());
+        anchorPane.getChildren().addAll(mainMenu.getButton(),mainMenu.getbuttonMonth(),mainMenu.getBestWorstButton(), mainMenu.getImageView(), mainMenu.getLabelHeader(scene));
         stage.setTitle("Solar cell");
         stage.setScene(scene);
         stage.show();
-
-        System.out.println("pis os da");
     }
 
     public static void main(String[] args)
