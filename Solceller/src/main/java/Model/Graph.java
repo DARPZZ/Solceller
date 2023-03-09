@@ -66,7 +66,7 @@ public class Graph
      * @param name The name of the series
      * @param productionDay An TreeMap containing the values for the series
      */
-    public void CreateSeriesDay(String name, TreeMap<String, Integer> productionDay)
+    public void CreateSeries(String name, TreeMap<String, Integer> productionDay)
     {
         XYChart.Series<String, Number> seriesName = new XYChart.Series<>();
         seriesName.setName(name);

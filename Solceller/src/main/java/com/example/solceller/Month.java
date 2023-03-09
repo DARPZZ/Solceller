@@ -68,7 +68,7 @@ public class Month implements iChangeScene
             data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), monthIndex));
             TreeMap<String, Integer> dailyProduction = fillMap(data);
             MyGraph.getChart().getData().clear();
-            MyGraph.CreateSeriesDay("SID: " + choiceID + " for " + month, dailyProduction);
+            MyGraph.CreateSeries("SID: " + choiceID + " for " + month, dailyProduction);
         });
 
         buttonBack.setPrefWidth(50);
