@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class BestWorst implements iChangeScene
 {
-    findDate date = new findDate();
+    SearchSite date = new SearchSite();
     Button buttonBack = new Button("Back");
     public Scene createBestWorstScene()
     {

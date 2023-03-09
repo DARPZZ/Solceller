@@ -16,7 +16,7 @@ import java.util.TreeMap;
 
 public class Month implements iChangeScene
 {
-    findDate findDate = new findDate();
+    SearchSite findDate = new SearchSite();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
     Graph MyGraph = new Graph("Production for month: ", "Day", "Production", Type.BAR_CHART);

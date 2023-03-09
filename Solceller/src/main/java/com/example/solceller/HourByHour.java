@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class HourByHour implements iChangeScene
 {
-    findDate date = new findDate();
+    SearchSite date = new SearchSite();
     Button buttonBack = new Button("Back");
     Button btnAccept = new Button("Enter");
     Graph MyGraph = new Graph("Hour by hour", "Hours", "Production", Type.BAR_CHART);
