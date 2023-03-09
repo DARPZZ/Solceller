@@ -108,7 +108,7 @@ public class Month implements iChangeScene
         NOVEMBER("11 - November"),
         DECEMBER("12 - December");
 
-        private final String MONTH_NO;
+        public final String MONTH_NO;
 
         MonthEnum (String monthNo)
         {
@@ -126,7 +126,7 @@ public class Month implements iChangeScene
      * @param entryArrayList An arrayList containing Entry object to be added to TreeMap
      * @return TreeMap filled with day as key and production as value
      */
-    public TreeMap<String, Integer> fillMap(ArrayList<Entry> entryArrayList)
+    public static TreeMap<String, Integer> fillMap(ArrayList<Entry> entryArrayList)
     {
         TreeMap<String, Integer> dailyTotals = new TreeMap<>();
         String day = "";

@@ -31,8 +31,8 @@ public class findDate
             public void handle(KeyEvent keyEvent)
             {
                 if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-                    for (int i = 0; i < HelloController.sites.size(); i++) {
-                        siteID = (i+1 + ". "+ HelloController.sites.get(i).getSiteID());
+                    for (int i = 0; i < FileHelper.sites.size(); i++) {
+                        siteID = (i+1 + ". "+ FileHelper.sites.get(i).getSiteID());
                         choiceBox.getItems().remove(siteID);
                         if ((siteID.contains(SearchField.getText()))) {
                             choiceBox.getItems().remove(siteID);
