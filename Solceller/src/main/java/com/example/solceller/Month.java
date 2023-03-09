@@ -28,7 +28,7 @@ public class Month implements iChangeScene
     public Scene createMonthScene() {
         buttonBack.setPrefWidth(50);
         AnchorPane anchorPane = new AnchorPane();
-        Scene scene = new Scene(anchorPane, 950, 700);
+        Scene scene = new Scene(anchorPane, 1000, 500);
 
 
         ArrayList<String> choices = new ArrayList<>();

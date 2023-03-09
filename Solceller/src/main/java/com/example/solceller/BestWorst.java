@@ -16,7 +16,7 @@ public class BestWorst implements iChangeScene
         buttonBack.setPrefWidth(50);
 
         anchorPane.getChildren().addAll(buttonBack);
-        Scene scene = new Scene(anchorPane, 950, 700);
+        Scene scene = new Scene(anchorPane, 1000, 500);
         return scene;
     }
 

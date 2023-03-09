@@ -32,7 +32,7 @@ public class HourByHour implements iChangeScene
 
         buttonBack.setPrefWidth(50);
 
-        Scene scene = new Scene(anchorPane, 950, 700);
+        Scene scene = new Scene(anchorPane, 1000, 500);
 
         ArrayList<String> choices = new ArrayList<>();
         for (int i = 0; i < HelloController.sites.size(); i++)
