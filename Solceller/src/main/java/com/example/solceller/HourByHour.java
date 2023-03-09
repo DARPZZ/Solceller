@@ -9,6 +9,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -40,9 +41,9 @@ public class HourByHour implements iChangeScene
         Scene scene = new Scene(anchorPane, 950, 700);
 
         ArrayList<String> choices = new ArrayList<>();
-        for (int i = 0; i < HelloController.sites.size(); i++)
+        for (int i = 0; i < FileHelper.sites.size(); i++)
         {
-            choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
+            choices.add(i+1 + ". " + FileHelper.sites.get(i).getSiteID());
         }
         ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
 
@@ -71,7 +72,7 @@ public class HourByHour implements iChangeScene
 
         btnAccept.setOnAction(actionEvent ->
         {
-            data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), month, day));
+            data = new ArrayList<>(FileHelper.getEntry(FileHelper.sites.get(choiceIndex), month, day));
             MyGraph.getChart().getData().clear();
             MyGraph.CreateSeriesHour("SID: " + choiceID, data);
         });

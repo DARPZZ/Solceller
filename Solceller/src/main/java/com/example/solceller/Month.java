@@ -29,9 +29,9 @@ public class Month implements iChangeScene
 
 
         ArrayList<String> choices = new ArrayList<>();
-        for (int i = 0; i < HelloController.sites.size(); i++)
+        for (int i = 0; i < FileHelper.sites.size(); i++)
         {
-            choices.add(i+1 + ". " + HelloController.sites.get(i).getSiteID());
+            choices.add(i+1 + ". " + FileHelper.sites.get(i).getSiteID());
         }
         ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableList(choices));
 
@@ -65,7 +65,7 @@ public class Month implements iChangeScene
         // Button "accept" creates an arrayList with chosen values
         btnAccept.setOnAction(actionEvent ->
         {
-            data = new ArrayList<>(FileHelper.getEntry(HelloController.sites.get(choiceIndex), monthIndex));
+            data = new ArrayList<>(FileHelper.getEntry(FileHelper.sites.get(choiceIndex), monthIndex));
             TreeMap<String, Integer> dailyProduction = fillMap(data);
             MyGraph.getChart().getData().clear();
             MyGraph.CreateSeriesDay("SID: " + choiceID + " for " + month, dailyProduction);
