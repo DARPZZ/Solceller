@@ -31,7 +31,6 @@ public class Site
                  this.siteEntry.get(i).get(j).add(null);
                 }
             }
-
         }
         this.siteID = siteID;
 

@@ -49,12 +49,12 @@ public class FileHelper
     public static int getOnline(Site site, int month)
     {
         onlineInt =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<Entry> e: site.siteEntry.get(month))
             {
-                onlineInt += getOnline(site,month-1,i);
+                onlineInt += getOnline(site,month,i);
                 i++;
             }
         }
@@ -68,7 +68,7 @@ public class FileHelper
     public static int getOnline(Site site)
     {
         onlineInt =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<ArrayList<Entry>> e: site.siteEntry)
@@ -167,12 +167,12 @@ public class FileHelper
     public static int getOffline(Site site, int month)
     {
         int offline =0;
-        int i=0;
+        int i=1;
         try
         {
-            for (ArrayList<Entry> e: site.siteEntry.get(month))
+            for (ArrayList<Entry> e: site.siteEntry.get(month-1))
             {
-                offline += getOffline(site,month-1,i);
+                offline += getOffline(site,month,i);
                 i++;
             }
         }
@@ -183,7 +183,7 @@ public class FileHelper
     public static int getOffline(Site site)
     {
         int offline =0;
-        int i=0;
+        int i=1;
         try
         {
             for (ArrayList<ArrayList<Entry>> e: site.siteEntry)
@@ -225,10 +225,10 @@ public class FileHelper
     public static ArrayList<Entry> getEntry(Site site, int month, int day)
     {
         ArrayList<Entry> entry = new ArrayList<>();
-        for (int i = 0; i < 25; i++)
+        for (int i = 1; i < 25; i++)
         {
             try {
-               entry.add(getEntry(site,month-1,day-1,i).get(0));
+               entry.add(getEntry(site,month,day,i).get(0));
             }
             catch (Exception e)
             {}
@@ -239,9 +239,9 @@ public class FileHelper
     public static ArrayList<Entry> getEntry(Site site, int month)
     {
         ArrayList<Entry> entry =new ArrayList<>();
-        for (int i = 0; i < 32; i++)
+        for (int i = 1; i < 32; i++)
         {
-            for ( Entry entr :getEntry(site,month-1,i))
+            for ( Entry entr :getEntry(site,month,i))
             {
                 try
                 {
