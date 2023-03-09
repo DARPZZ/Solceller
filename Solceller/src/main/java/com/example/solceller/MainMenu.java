@@ -17,7 +17,6 @@ import java.time.format.DateTimeFormatter;
 
 public class MainMenu implements iChangeScene
 {
-    DatePicker datePicker = new DatePicker();
 HourByHour hourByHour = new HourByHour();
 Month month = new Month();
 BestWorst bestWorst = new BestWorst();
@@ -68,6 +67,7 @@ BestWorst bestWorst = new BestWorst();
         Label label = new Label("Bæredygtig Energi fra Solceller");
         label.setLayoutX((scene.getWidth() / 2 -225));
         label.setLayoutY(50);
+        label.setId("title");
         return label;
     }
 
@@ -117,22 +117,5 @@ public void changescene(Stage stage, Scene scene)
 
     });
 }
-public DatePicker findDate()
-{
-    datePicker.setOnKeyPressed(new EventHandler<KeyEvent>()
-    {
-        @Override
-        public void handle(KeyEvent keyEvent)
-        {
-            if (keyEvent.getCode().equals(KeyCode.ENTER)){
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM");
-                String formattedValue = datePicker.getValue().format(formatter);
-                System.out.println(formattedValue);
-
-            }
-        }
-    });
- return datePicker;
-}
 }
