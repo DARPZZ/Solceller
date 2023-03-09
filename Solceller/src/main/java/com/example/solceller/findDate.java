@@ -17,9 +17,13 @@ public class findDate
     String siteID = "";
     public ChoiceBox searchSite(AnchorPane anchorPane, ChoiceBox choiceBox)
     {
+        choiceBox.setLayoutX(10);
+        choiceBox.setLayoutY(325);
+        choiceBox.setPrefWidth(100);
+
         TextField SearchField = new TextField();
-        SearchField.setLayoutX(20);
-        SearchField.setLayoutY(500);
+        SearchField.setLayoutX(10);
+        SearchField.setLayoutY(300);
 
         SearchField.setOnKeyPressed(new EventHandler<KeyEvent>()
         {
@@ -28,8 +32,7 @@ public class findDate
             {
                 if (keyEvent.getCode().equals(KeyCode.ENTER)) {
                     for (int i = 0; i < HelloController.sites.size(); i++) {
-                        // System.out.println(HelloController.sites.get(i).getSiteID());
-                        siteID = String.valueOf(i+1 + ". "+ HelloController.sites.get(i).getSiteID());
+                        siteID = (i+1 + ". "+ HelloController.sites.get(i).getSiteID());
                         choiceBox.getItems().remove(siteID);
                         if ((siteID.contains(SearchField.getText()))) {
                             choiceBox.getItems().remove(siteID);

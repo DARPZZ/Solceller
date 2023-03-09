@@ -53,9 +53,7 @@ public class HourByHour implements iChangeScene
             System.out.println("choiceID " + choiceID);
         });
 
-        choiceBox.setLayoutX(20);
-        choiceBox.setLayoutY(70);
-        choiceBox.setPrefWidth(100);
+
 
 
 
@@ -65,7 +63,7 @@ public class HourByHour implements iChangeScene
         datePicker.setOnAction(actionEvent ->
         {
             String formattedDate = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            day = Integer.parseInt(formattedDate.substring(choiceIndex, formattedDate.indexOf("-")));
+            day = Integer.parseInt(formattedDate.substring(0, formattedDate.indexOf("-")));
             month = Integer.parseInt(formattedDate.substring(formattedDate.indexOf("-") + 1, formattedDate.indexOf("-") + 3));
 
         });
