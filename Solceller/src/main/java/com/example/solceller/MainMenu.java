@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +12,7 @@ import java.io.FileNotFoundException;
 public class MainMenu implements iChangeScene
 {
 HourByHour hourByHour = new HourByHour();
-Månede månede = new Månede();
+Month month = new Month();
 BestWorst bestWorst = new BestWorst();
 
     //region getter and buttons attributes
@@ -65,7 +64,7 @@ BestWorst bestWorst = new BestWorst();
 public void changescene(Stage stage, Scene scene)
 {
     hourByHour.changescene(stage,scene);
-    månede.changescene(stage,scene);
+    month.changescene(stage,scene);
     bestWorst.changescene(stage,scene);
     buttonHByH.setOnAction(new EventHandler<ActionEvent>()
     {
@@ -85,7 +84,7 @@ public void changescene(Stage stage, Scene scene)
         @Override
         public void handle(ActionEvent event)
         {
-            Scene createmånedScene = månede.createmånedScene();
+            Scene createmånedScene = month.createMonthScene();
             // set the new scene on the primary stage
             stage.setScene(createmånedScene);
         }
